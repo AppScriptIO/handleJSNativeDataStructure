@@ -1,0 +1,5 @@
+{
+  "name": "@dependency/deepObjectMerge",
+  "main": "./source/entrypoint.js",
+  "version": "1.0.0"
+}
