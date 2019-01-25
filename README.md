@@ -1,1 +1,1 @@
-repository
+Deep merge Javascript objects.
