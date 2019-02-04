@@ -1,1 +1,1 @@
-Deep merge Javascript objects.
+./documentation/information.md
