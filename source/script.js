@@ -6,25 +6,25 @@
  * @returns {object} New object with merged key/values
  */
 function isObject(obj) {
-  return obj && typeof obj === 'object'
+  return obj && typeof obj === 'object';
 }
-const isArray = Array.isArray
+
+const isArray = Array.isArray;
 
 export function mergeDeep(...objects) {
   return objects.reduce((prev, obj) => {
     Object.keys(obj).forEach(key => {
-      const pVal = prev[key]
-      const oVal = obj[key]
+      const pVal = prev[key];
+      const oVal = obj[key];
 
       if (isArray(pVal) && isArray(oVal)) {
-        prev[key] = pVal.concat(...oVal)
+        prev[key] = pVal.concat(...oVal);
       } else if (isObject(pVal) && isObject(oVal)) {
-        prev[key] = mergeDeep(pVal, oVal)
+        prev[key] = mergeDeep(pVal, oVal);
       } else {
-        prev[key] = oVal
+        prev[key] = oVal;
       }
-    })
-
-    return prev
-  }, {})
+    });
+    return prev;
+  }, {});
 }

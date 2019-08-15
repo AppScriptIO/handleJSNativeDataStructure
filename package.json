@@ -2,6 +2,9 @@
   "name": "@dependency/deepObjectMerge",
   "main": "./entrypoint/programmaticAPI",
   "version": "1.0.1",
+  "scripts": {
+    "buildAndRelease": "yarn run scriptManager shouldCompileScript=true JSProject/buildAndRelease \".moduleProject({})\""
+  },
   "devDependencies": {
     "@dependency/deploymentScript": "https://github.com/AppScriptIO/deploymentScript#semver:^1.x.x",
     "@dependency/javascriptStaticAnalysis": "https://github.com/AppScriptIO/javascriptStaticAnalysis#semver:^1.x.x",
