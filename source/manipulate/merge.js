@@ -3,8 +3,8 @@ import merge from 'deepmerge' // used for merging first level argument array by 
 import { merge as merge2, concatArrays } from 'merge-anything' // used to merge nested objects, and it preserves special instance prototypes (i.e. non Object prototypes) during merging.
 const hasOwnProperty = Object.prototype.hasOwnProperty // allows supporting objects delefating null.
 import { removeUndefinedFromObject } from './removeUndefinedFromObject.js'
-const isArray = Array.isArray;
-const isObject = (obj) => obj && typeof obj === 'object';
+const isArray = Array.isArray
+const isObject = obj => obj && typeof obj === 'object'
 
 /** https://stackoverflow.com/questions/27936772/how-to-deep-merge-instead-of-shallow-merge
  * Performs a deep merge of objects and returns new object. Does not modify
@@ -16,21 +16,20 @@ const isObject = (obj) => obj && typeof obj === 'object';
 export function mergeDeep(...objects) {
   return objects.reduce((prev, obj) => {
     Object.keys(obj).forEach(key => {
-      const pVal = prev[key];
-      const oVal = obj[key];
+      const pVal = prev[key]
+      const oVal = obj[key]
 
       if (isArray(pVal) && isArray(oVal)) {
-        prev[key] = pVal.concat(...oVal);
+        prev[key] = pVal.concat(...oVal)
       } else if (isObject(pVal) && isObject(oVal)) {
-        prev[key] = mergeDeep(pVal, oVal);
+        prev[key] = mergeDeep(pVal, oVal)
       } else {
-        prev[key] = oVal;
+        prev[key] = oVal
       }
-    });
-    return prev;
-  }, {});
+    })
+    return prev
+  }, {})
 }
-
 
 // Merge default values into passed arguments (1 level object merge) - this function is used as a pattern to set default parameters and make them accessible to latter/following decorator functions that wrap the target method.
 export function mergeDefaultParameter({ defaultArg, passedArg }) {
@@ -124,4 +123,12 @@ const deepMergeArgumentArray = ({ overridingArray, defaultArray /** arguments us
 export function deepMergeParameter(targetArgArray, ...defaultArgumentListArray) {
   for (let defaultArray of defaultArgumentListArray) targetArgArray = deepMergeArgumentArray({ overridingArray: targetArgArray, defaultArray })
   return targetArgArray
+}
+
+// add base object to target object without overwriting existing properties.
+export function shallowMergeNonExistingPropertyOnly({ targetObject, baseObject }) {
+  return Object.keys(baseObject).reduce(function(accumulator, key) {
+    if (!accumulator[key]) accumulator[key] = baseObject[key]
+    return accumulator
+  }, targetObject)
 }

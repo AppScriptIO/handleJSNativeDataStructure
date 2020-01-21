@@ -1,2 +1,2 @@
 export * from './merge.js'
-export * from './deepObjectFreeze.js'
+export * from './freeze.js'

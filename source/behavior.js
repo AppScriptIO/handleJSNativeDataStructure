@@ -1,5 +1,6 @@
 let hasOwnProperty = Object.prototype.hasOwnProperty
 
+// prevents manipulating object's properties recursively
 export function deepFreeze({ object, getPropertyImplementation = Object.getOwnPropertyNames }: { getPropertyImplementation: Object.getOwnPropertyNames | Object.getOwnPropertySymbols } = {}) {
   Object.freeze(object)
 
@@ -17,4 +18,12 @@ export function deepFreeze({ object, getPropertyImplementation = Object.getOwnPr
   })
 
   return object
+}
+
+// function wrapper to set thisArg on target object methods.
+export function bindAllMethod({ target /**target object holding the methods to bind */, thisArg }) {
+  Object.keys(target).forEach(function(key) {
+    target[key] = target[key].bind(thisArg)
+  }, {})
+  return target
 }
