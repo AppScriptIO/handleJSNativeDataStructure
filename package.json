@@ -1,7 +1,7 @@
 {
 	"name": "@dependency/handleJSNativeDataStructure",
 	"main": "./entrypoint/programmaticAPI",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"scripts": {
 		"build": "yarn run scriptManager shouldCompileScript=true @dependency/deploymentScript \".buildSourceCode.moduleProject({}, {compile:[/**'./test'*/]})\"",
 		"buildAndRelease": "yarn run scriptManager shouldCompileScript=true @dependency/deploymentScript \".buildAndRelease.moduleProject({})\""
