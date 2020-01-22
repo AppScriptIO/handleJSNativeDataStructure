@@ -1,7 +1,7 @@
 import assert from 'assert'
 import merge from 'deepmerge' // used for merging first level argument array by index.
 import { merge as merge2, concatArrays } from 'merge-anything' // used to merge nested objects, and it preserves special instance prototypes (i.e. non Object prototypes) during merging.
-import { removeUndefinedFromObject } from './removeUndefinedFromObject.js'
+import { removeUndefinedFromObject } from './removeUndefined.js'
 const hasOwnProperty = Object.prototype.hasOwnProperty // allows supporting objects delefating null.
 const isArray = Array.isArray
 const isObject = obj => obj && typeof obj === 'object'
