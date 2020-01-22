@@ -1,9 +1,10 @@
-const GeneratorFunction = function*() {}.constructor
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.isGeneratorFunction = void 0;const GeneratorFunction = function* () {}.constructor;
 
-export const isGeneratorFunction = value => {
+const isGeneratorFunction = value => {
   if (typeof value !== 'function') {
-    return false
+    return false;
   }
-  return (value.constructor && value.constructor.name === 'GeneratorFunction') || toString.call(value) === '[object GeneratorFunction]'
-  // another way is to check for iterator symbol `if(func[Symbol.iterator])`
-}
+  return value.constructor && value.constructor.name === 'GeneratorFunction' || toString.call(value) === '[object GeneratorFunction]';
+
+};exports.isGeneratorFunction = isGeneratorFunction;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NvdXJjZS9jaGVjay5qcyJdLCJuYW1lcyI6WyJHZW5lcmF0b3JGdW5jdGlvbiIsImNvbnN0cnVjdG9yIiwiaXNHZW5lcmF0b3JGdW5jdGlvbiIsInZhbHVlIiwibmFtZSIsInRvU3RyaW5nIiwiY2FsbCJdLCJtYXBwaW5ncyI6ImdIQUFBLE1BQU1BLGlCQUFpQixHQUFHLGFBQVksQ0FBRSxDQUFkLENBQWVDLFdBQXpDOztBQUVPLE1BQU1DLG1CQUFtQixHQUFHQyxLQUFLLElBQUk7QUFDMUMsTUFBSSxPQUFPQSxLQUFQLEtBQWlCLFVBQXJCLEVBQWlDO0FBQy9CLFdBQU8sS0FBUDtBQUNEO0FBQ0QsU0FBUUEsS0FBSyxDQUFDRixXQUFOLElBQXFCRSxLQUFLLENBQUNGLFdBQU4sQ0FBa0JHLElBQWxCLEtBQTJCLG1CQUFqRCxJQUF5RUMsUUFBUSxDQUFDQyxJQUFULENBQWNILEtBQWQsTUFBeUIsNEJBQXpHOztBQUVELENBTk0sQyIsInNvdXJjZXNDb250ZW50IjpbImNvbnN0IEdlbmVyYXRvckZ1bmN0aW9uID0gZnVuY3Rpb24qKCkge30uY29uc3RydWN0b3JcblxuZXhwb3J0IGNvbnN0IGlzR2VuZXJhdG9yRnVuY3Rpb24gPSB2YWx1ZSA9PiB7XG4gIGlmICh0eXBlb2YgdmFsdWUgIT09ICdmdW5jdGlvbicpIHtcbiAgICByZXR1cm4gZmFsc2VcbiAgfVxuICByZXR1cm4gKHZhbHVlLmNvbnN0cnVjdG9yICYmIHZhbHVlLmNvbnN0cnVjdG9yLm5hbWUgPT09ICdHZW5lcmF0b3JGdW5jdGlvbicpIHx8IHRvU3RyaW5nLmNhbGwodmFsdWUpID09PSAnW29iamVjdCBHZW5lcmF0b3JGdW5jdGlvbl0nXG4gIC8vIGFub3RoZXIgd2F5IGlzIHRvIGNoZWNrIGZvciBpdGVyYXRvciBzeW1ib2wgYGlmKGZ1bmNbU3ltYm9sLml0ZXJhdG9yXSlgXG59XG4iXX0=
