@@ -5,7 +5,7 @@ import stream from 'stream'
 const DuplexStream = stream.Duplex
 import filesystem from 'fs'
 import deleteModule from 'del'
-import { streamToString } from './entrypoint.js'
+import { streamToString } from '../source/convert.js'
 
 describe('function streamToString: ', function() {
   describe('Convert a stream to string', function() {

@@ -5,7 +5,7 @@ import stream from 'stream'
 const DuplexStream = stream.Duplex
 import filesystem from 'fs'
 import deleteModule from 'del'
-import { wrapStringStream } from './entrypoint.js'
+import { wrapStringStream } from '../source/manipulate/wrapStringStream.js'
 const isStream = stream => !!(typeof stream === 'object' && typeof stream.pipe === 'function') // check if a stream
 
 describe('function wrapStringStream: ', function() {

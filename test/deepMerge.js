@@ -1,8 +1,7 @@
 // import assert from 'assert'
 import path from 'path'
 import { assert } from 'chai'
-import configuration from '../setup/configuration'
-import { mergeDeep } from './entrypoint.js'
+import { mergeDeep } from '../source/manipulate/merge.js'
 
 describe('function mergeDeep: ', function() {
   describe('merge objects properties', function() {
