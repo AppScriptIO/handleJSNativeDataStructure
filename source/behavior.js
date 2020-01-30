@@ -1,29 +1,30 @@
-let hasOwnProperty = Object.prototype.hasOwnProperty
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.deepFreeze = deepFreeze;exports.bindAllMethod = bindAllMethod;let hasOwnProperty = Object.prototype.hasOwnProperty;
 
-// prevents manipulating object's properties recursively
-export function deepFreeze({ object, getPropertyImplementation = Object.getOwnPropertyNames }: { getPropertyImplementation: Object.getOwnPropertyNames | Object.getOwnPropertySymbols } = {}) {
-  Object.freeze(object)
 
-  let isFunction = typeof object === 'function'
-  getPropertyImplementation(object).forEach(function(property) {
+function deepFreeze({ object, getPropertyImplementation = Object.getOwnPropertyNames } = {}) {
+  Object.freeze(object);
+
+  let isFunction = typeof object === 'function';
+  getPropertyImplementation(object).forEach(function (property) {
     if (
-      hasOwnProperty.call(object, property) &&
-      object[property] !== null &&
-      (isFunction ? property !== 'caller' && property !== 'callee' && property !== 'arguments' : true) &&
-      (typeof object[property] === 'object' || typeof object[property] === 'function') &&
-      !Object.isFrozen(object[property])
-    ) {
-      deepFreeze({ object: object[property], getPropertyImplementation })
+    hasOwnProperty.call(object, property) &&
+    object[property] !== null && (
+    isFunction ? property !== 'caller' && property !== 'callee' && property !== 'arguments' : true) && (
+    typeof object[property] === 'object' || typeof object[property] === 'function') &&
+    !Object.isFrozen(object[property]))
+    {
+      deepFreeze({ object: object[property], getPropertyImplementation });
     }
-  })
+  });
 
-  return object
+  return object;
 }
 
-// function wrapper to set thisArg on target object methods.
-export function bindAllMethod({ target /**target object holding the methods to bind */, thisArg }) {
-  Object.keys(target).forEach(function(key) {
-    target[key] = target[key].bind(thisArg)
-  }, {})
-  return target
+
+function bindAllMethod({ target, thisArg }) {
+  Object.keys(target).forEach(function (key) {
+    target[key] = target[key].bind(thisArg);
+  }, {});
+  return target;
 }
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NvdXJjZS9iZWhhdmlvci5qcyJdLCJuYW1lcyI6WyJoYXNPd25Qcm9wZXJ0eSIsIk9iamVjdCIsInByb3RvdHlwZSIsImRlZXBGcmVlemUiLCJvYmplY3QiLCJnZXRQcm9wZXJ0eUltcGxlbWVudGF0aW9uIiwiZ2V0T3duUHJvcGVydHlOYW1lcyIsImZyZWV6ZSIsImlzRnVuY3Rpb24iLCJmb3JFYWNoIiwicHJvcGVydHkiLCJjYWxsIiwiaXNGcm96ZW4iLCJiaW5kQWxsTWV0aG9kIiwidGFyZ2V0IiwidGhpc0FyZyIsImtleXMiLCJrZXkiLCJiaW5kIl0sIm1hcHBpbmdzIjoiaUpBQUEsSUFBSUEsY0FBYyxHQUFHQyxNQUFNLENBQUNDLFNBQVAsQ0FBaUJGLGNBQXRDOzs7QUFHTyxTQUFTRyxVQUFULENBQW9CLEVBQUVDLE1BQUYsRUFBVUMseUJBQXlCLEdBQUdKLE1BQU0sQ0FBQ0ssbUJBQTdDLEtBQStKLEVBQW5MLEVBQXVMO0FBQzVMTCxFQUFBQSxNQUFNLENBQUNNLE1BQVAsQ0FBY0gsTUFBZDs7QUFFQSxNQUFJSSxVQUFVLEdBQUcsT0FBT0osTUFBUCxLQUFrQixVQUFuQztBQUNBQyxFQUFBQSx5QkFBeUIsQ0FBQ0QsTUFBRCxDQUF6QixDQUFrQ0ssT0FBbEMsQ0FBMEMsVUFBU0MsUUFBVCxFQUFtQjtBQUMzRDtBQUNFVixJQUFBQSxjQUFjLENBQUNXLElBQWYsQ0FBb0JQLE1BQXBCLEVBQTRCTSxRQUE1QjtBQUNBTixJQUFBQSxNQUFNLENBQUNNLFFBQUQsQ0FBTixLQUFxQixJQURyQjtBQUVDRixJQUFBQSxVQUFVLEdBQUdFLFFBQVEsS0FBSyxRQUFiLElBQXlCQSxRQUFRLEtBQUssUUFBdEMsSUFBa0RBLFFBQVEsS0FBSyxXQUFsRSxHQUFnRixJQUYzRjtBQUdDLFdBQU9OLE1BQU0sQ0FBQ00sUUFBRCxDQUFiLEtBQTRCLFFBQTVCLElBQXdDLE9BQU9OLE1BQU0sQ0FBQ00sUUFBRCxDQUFiLEtBQTRCLFVBSHJFO0FBSUEsS0FBQ1QsTUFBTSxDQUFDVyxRQUFQLENBQWdCUixNQUFNLENBQUNNLFFBQUQsQ0FBdEIsQ0FMSDtBQU1FO0FBQ0FQLE1BQUFBLFVBQVUsQ0FBQyxFQUFFQyxNQUFNLEVBQUVBLE1BQU0sQ0FBQ00sUUFBRCxDQUFoQixFQUE0QkwseUJBQTVCLEVBQUQsQ0FBVjtBQUNEO0FBQ0YsR0FWRDs7QUFZQSxTQUFPRCxNQUFQO0FBQ0Q7OztBQUdNLFNBQVNTLGFBQVQsQ0FBdUIsRUFBRUMsTUFBRixFQUEwREMsT0FBMUQsRUFBdkIsRUFBNEY7QUFDakdkLEVBQUFBLE1BQU0sQ0FBQ2UsSUFBUCxDQUFZRixNQUFaLEVBQW9CTCxPQUFwQixDQUE0QixVQUFTUSxHQUFULEVBQWM7QUFDeENILElBQUFBLE1BQU0sQ0FBQ0csR0FBRCxDQUFOLEdBQWNILE1BQU0sQ0FBQ0csR0FBRCxDQUFOLENBQVlDLElBQVosQ0FBaUJILE9BQWpCLENBQWQ7QUFDRCxHQUZELEVBRUcsRUFGSDtBQUdBLFNBQU9ELE1BQVA7QUFDRCIsInNvdXJjZXNDb250ZW50IjpbImxldCBoYXNPd25Qcm9wZXJ0eSA9IE9iamVjdC5wcm90b3R5cGUuaGFzT3duUHJvcGVydHlcclxuXHJcbi8vIHByZXZlbnRzIG1hbmlwdWxhdGluZyBvYmplY3QncyBwcm9wZXJ0aWVzIHJlY3Vyc2l2ZWx5XHJcbmV4cG9ydCBmdW5jdGlvbiBkZWVwRnJlZXplKHsgb2JqZWN0LCBnZXRQcm9wZXJ0eUltcGxlbWVudGF0aW9uID0gT2JqZWN0LmdldE93blByb3BlcnR5TmFtZXMgfTogeyBnZXRQcm9wZXJ0eUltcGxlbWVudGF0aW9uOiBPYmplY3QuZ2V0T3duUHJvcGVydHlOYW1lcyB8IE9iamVjdC5nZXRPd25Qcm9wZXJ0eVN5bWJvbHMgfSA9IHt9KSB7XHJcbiAgT2JqZWN0LmZyZWV6ZShvYmplY3QpXHJcblxyXG4gIGxldCBpc0Z1bmN0aW9uID0gdHlwZW9mIG9iamVjdCA9PT0gJ2Z1bmN0aW9uJ1xyXG4gIGdldFByb3BlcnR5SW1wbGVtZW50YXRpb24ob2JqZWN0KS5mb3JFYWNoKGZ1bmN0aW9uKHByb3BlcnR5KSB7XHJcbiAgICBpZiAoXHJcbiAgICAgIGhhc093blByb3BlcnR5LmNhbGwob2JqZWN0LCBwcm9wZXJ0eSkgJiZcclxuICAgICAgb2JqZWN0W3Byb3BlcnR5XSAhPT0gbnVsbCAmJlxyXG4gICAgICAoaXNGdW5jdGlvbiA/IHByb3BlcnR5ICE9PSAnY2FsbGVyJyAmJiBwcm9wZXJ0eSAhPT0gJ2NhbGxlZScgJiYgcHJvcGVydHkgIT09ICdhcmd1bWVudHMnIDogdHJ1ZSkgJiZcclxuICAgICAgKHR5cGVvZiBvYmplY3RbcHJvcGVydHldID09PSAnb2JqZWN0JyB8fCB0eXBlb2Ygb2JqZWN0W3Byb3BlcnR5XSA9PT0gJ2Z1bmN0aW9uJykgJiZcclxuICAgICAgIU9iamVjdC5pc0Zyb3plbihvYmplY3RbcHJvcGVydHldKVxyXG4gICAgKSB7XHJcbiAgICAgIGRlZXBGcmVlemUoeyBvYmplY3Q6IG9iamVjdFtwcm9wZXJ0eV0sIGdldFByb3BlcnR5SW1wbGVtZW50YXRpb24gfSlcclxuICAgIH1cclxuICB9KVxyXG5cclxuICByZXR1cm4gb2JqZWN0XHJcbn1cclxuXHJcbi8vIGZ1bmN0aW9uIHdyYXBwZXIgdG8gc2V0IHRoaXNBcmcgb24gdGFyZ2V0IG9iamVjdCBtZXRob2RzLlxyXG5leHBvcnQgZnVuY3Rpb24gYmluZEFsbE1ldGhvZCh7IHRhcmdldCAvKip0YXJnZXQgb2JqZWN0IGhvbGRpbmcgdGhlIG1ldGhvZHMgdG8gYmluZCAqLywgdGhpc0FyZyB9KSB7XHJcbiAgT2JqZWN0LmtleXModGFyZ2V0KS5mb3JFYWNoKGZ1bmN0aW9uKGtleSkge1xyXG4gICAgdGFyZ2V0W2tleV0gPSB0YXJnZXRba2V5XS5iaW5kKHRoaXNBcmcpXHJcbiAgfSwge30pXHJcbiAgcmV0dXJuIHRhcmdldFxyXG59XHJcbiJdfQ==
