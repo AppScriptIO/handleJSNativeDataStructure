@@ -7,7 +7,9 @@
 		"buildAndRelease": "yarn run scriptManager shouldCompileScript=true @deployment/deploymentScript \".buildAndRelease.moduleProject({})\""
 	},
 	"dependencies": {
-		"multistream": "^2.1.1"
+		"multistream": "^2.1.1",
+		"deepmerge": "^4.2.2",
+		"merge-anything": "^2.4.4"
 	},
 	"devDependencies": {
 		"@deployment/deploymentScript": "https://github.com/AppScriptIO/deploymentScript#semver:^2.x.x",
