@@ -1,28 +1,29 @@
-// 📦 Parse string to object by different options.
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.parseKeyValuePairSeparatedBySymbolConcatenatedString = parseKeyValuePairSeparatedBySymbolConcatenatedString;exports.parseKeyValuePairSeparatedBySymbolFromArray = parseKeyValuePairSeparatedBySymbolFromArray;exports.combineKeyValueObjectIntoString = combineKeyValueObjectIntoString;
 
-// 'x=y' --> { x: y }
-export function parseKeyValuePairSeparatedBySymbolConcatenatedString({ string, delimiter = ' ', separatingSymbol = '=' }) {
-    return parseKeyValuePairSeparatedBySymbolFromArray({ 
-        array: string.split(delimiter),
-        separatingSymbol
-    })
+
+function parseKeyValuePairSeparatedBySymbolConcatenatedString({ string, delimiter = ' ', separatingSymbol = '=' }) {
+  return parseKeyValuePairSeparatedBySymbolFromArray({
+    array: string.split(delimiter),
+    separatingSymbol });
+
 }
 
-// ['x=y'] --> { x: y }
-export function parseKeyValuePairSeparatedBySymbolFromArray({ array, separatingSymbol = '=' }) {
-    let parsedObject = {}
-    array.forEach( pair => {
-        let array = pair.split(separatingSymbol);
-        array[1] && (parsedObject[array[0]] = array[1]);
-    })
-    return parsedObject
+
+function parseKeyValuePairSeparatedBySymbolFromArray({ array, separatingSymbol = '=' }) {
+  let parsedObject = {};
+  array.forEach(pair => {
+    let array = pair.split(separatingSymbol);
+    array[1] && (parsedObject[array[0]] = array[1]);
+  });
+  return parsedObject;
 }
 
-export function combineKeyValueObjectIntoString({ object, delimiter = ' ', separatingSymbol='=' }) {
-    return Object.keys(object)
-        .reduce((previous, key) => {
-            previous.push(`${key}${separatingSymbol}${object[key]}`)
-            return previous;
-        }, [])
-        .join(delimiter)
-} 
+function combineKeyValueObjectIntoString({ object, delimiter = ' ', separatingSymbol = '=' }) {
+  return Object.keys(object).
+  reduce((previous, key) => {
+    previous.push(`${key}${separatingSymbol}${object[key]}`);
+    return previous;
+  }, []).
+  join(delimiter);
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NvdXJjZS9wYXJzZS5qcyJdLCJuYW1lcyI6WyJwYXJzZUtleVZhbHVlUGFpclNlcGFyYXRlZEJ5U3ltYm9sQ29uY2F0ZW5hdGVkU3RyaW5nIiwic3RyaW5nIiwiZGVsaW1pdGVyIiwic2VwYXJhdGluZ1N5bWJvbCIsInBhcnNlS2V5VmFsdWVQYWlyU2VwYXJhdGVkQnlTeW1ib2xGcm9tQXJyYXkiLCJhcnJheSIsInNwbGl0IiwicGFyc2VkT2JqZWN0IiwiZm9yRWFjaCIsInBhaXIiLCJjb21iaW5lS2V5VmFsdWVPYmplY3RJbnRvU3RyaW5nIiwib2JqZWN0IiwiT2JqZWN0Iiwia2V5cyIsInJlZHVjZSIsInByZXZpb3VzIiwia2V5IiwicHVzaCIsImpvaW4iXSwibWFwcGluZ3MiOiI7OztBQUdPLFNBQVNBLG9EQUFULENBQThELEVBQUVDLE1BQUYsRUFBVUMsU0FBUyxHQUFHLEdBQXRCLEVBQTJCQyxnQkFBZ0IsR0FBRyxHQUE5QyxFQUE5RCxFQUFtSDtBQUN0SCxTQUFPQywyQ0FBMkMsQ0FBQztBQUMvQ0MsSUFBQUEsS0FBSyxFQUFFSixNQUFNLENBQUNLLEtBQVAsQ0FBYUosU0FBYixDQUR3QztBQUUvQ0MsSUFBQUEsZ0JBRitDLEVBQUQsQ0FBbEQ7O0FBSUg7OztBQUdNLFNBQVNDLDJDQUFULENBQXFELEVBQUVDLEtBQUYsRUFBU0YsZ0JBQWdCLEdBQUcsR0FBNUIsRUFBckQsRUFBd0Y7QUFDM0YsTUFBSUksWUFBWSxHQUFHLEVBQW5CO0FBQ0FGLEVBQUFBLEtBQUssQ0FBQ0csT0FBTixDQUFlQyxJQUFJLElBQUk7QUFDbkIsUUFBSUosS0FBSyxHQUFHSSxJQUFJLENBQUNILEtBQUwsQ0FBV0gsZ0JBQVgsQ0FBWjtBQUNBRSxJQUFBQSxLQUFLLENBQUMsQ0FBRCxDQUFMLEtBQWFFLFlBQVksQ0FBQ0YsS0FBSyxDQUFDLENBQUQsQ0FBTixDQUFaLEdBQXlCQSxLQUFLLENBQUMsQ0FBRCxDQUEzQztBQUNILEdBSEQ7QUFJQSxTQUFPRSxZQUFQO0FBQ0g7O0FBRU0sU0FBU0csK0JBQVQsQ0FBeUMsRUFBRUMsTUFBRixFQUFVVCxTQUFTLEdBQUcsR0FBdEIsRUFBMkJDLGdCQUFnQixHQUFDLEdBQTVDLEVBQXpDLEVBQTRGO0FBQy9GLFNBQU9TLE1BQU0sQ0FBQ0MsSUFBUCxDQUFZRixNQUFaO0FBQ0ZHLEVBQUFBLE1BREUsQ0FDSyxDQUFDQyxRQUFELEVBQVdDLEdBQVgsS0FBbUI7QUFDdkJELElBQUFBLFFBQVEsQ0FBQ0UsSUFBVCxDQUFlLEdBQUVELEdBQUksR0FBRWIsZ0JBQWlCLEdBQUVRLE1BQU0sQ0FBQ0ssR0FBRCxDQUFNLEVBQXREO0FBQ0EsV0FBT0QsUUFBUDtBQUNILEdBSkUsRUFJQSxFQUpBO0FBS0ZHLEVBQUFBLElBTEUsQ0FLR2hCLFNBTEgsQ0FBUDtBQU1IIiwic291cmNlc0NvbnRlbnQiOlsiLy8g8J+TpiBQYXJzZSBzdHJpbmcgdG8gb2JqZWN0IGJ5IGRpZmZlcmVudCBvcHRpb25zLlxuXG4vLyAneD15JyAtLT4geyB4OiB5IH1cbmV4cG9ydCBmdW5jdGlvbiBwYXJzZUtleVZhbHVlUGFpclNlcGFyYXRlZEJ5U3ltYm9sQ29uY2F0ZW5hdGVkU3RyaW5nKHsgc3RyaW5nLCBkZWxpbWl0ZXIgPSAnICcsIHNlcGFyYXRpbmdTeW1ib2wgPSAnPScgfSkge1xuICAgIHJldHVybiBwYXJzZUtleVZhbHVlUGFpclNlcGFyYXRlZEJ5U3ltYm9sRnJvbUFycmF5KHsgXG4gICAgICAgIGFycmF5OiBzdHJpbmcuc3BsaXQoZGVsaW1pdGVyKSxcbiAgICAgICAgc2VwYXJhdGluZ1N5bWJvbFxuICAgIH0pXG59XG5cbi8vIFsneD15J10gLS0+IHsgeDogeSB9XG5leHBvcnQgZnVuY3Rpb24gcGFyc2VLZXlWYWx1ZVBhaXJTZXBhcmF0ZWRCeVN5bWJvbEZyb21BcnJheSh7IGFycmF5LCBzZXBhcmF0aW5nU3ltYm9sID0gJz0nIH0pIHtcbiAgICBsZXQgcGFyc2VkT2JqZWN0ID0ge31cbiAgICBhcnJheS5mb3JFYWNoKCBwYWlyID0+IHtcbiAgICAgICAgbGV0IGFycmF5ID0gcGFpci5zcGxpdChzZXBhcmF0aW5nU3ltYm9sKTtcbiAgICAgICAgYXJyYXlbMV0gJiYgKHBhcnNlZE9iamVjdFthcnJheVswXV0gPSBhcnJheVsxXSk7XG4gICAgfSlcbiAgICByZXR1cm4gcGFyc2VkT2JqZWN0XG59XG5cbmV4cG9ydCBmdW5jdGlvbiBjb21iaW5lS2V5VmFsdWVPYmplY3RJbnRvU3RyaW5nKHsgb2JqZWN0LCBkZWxpbWl0ZXIgPSAnICcsIHNlcGFyYXRpbmdTeW1ib2w9Jz0nIH0pIHtcbiAgICByZXR1cm4gT2JqZWN0LmtleXMob2JqZWN0KVxuICAgICAgICAucmVkdWNlKChwcmV2aW91cywga2V5KSA9PiB7XG4gICAgICAgICAgICBwcmV2aW91cy5wdXNoKGAke2tleX0ke3NlcGFyYXRpbmdTeW1ib2x9JHtvYmplY3Rba2V5XX1gKVxuICAgICAgICAgICAgcmV0dXJuIHByZXZpb3VzO1xuICAgICAgICB9LCBbXSlcbiAgICAgICAgLmpvaW4oZGVsaW1pdGVyKVxufSAiXX0=

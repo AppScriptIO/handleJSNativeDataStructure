@@ -1,14 +1,15 @@
-import Stream from 'stream'
-import multistream from 'multistream'
+"use strict";var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");Object.defineProperty(exports, "__esModule", { value: true });exports.wrapStringStream = wrapStringStream;var _stream = _interopRequireDefault(require("stream"));
+var _multistream = _interopRequireDefault(require("multistream"));
 
-/** wrap stream with delimeters (implementations using streams)
- **/
-export async function wrapStringStream({ stream, beforeString, afterString }) {
-  let beforeStream = new Stream.Readable()
-  beforeStream.push(beforeString)
-  beforeStream.push(null)
-  let afterStream = new Stream.Readable()
-  afterStream.push(afterString)
-  afterStream.push(null)
-  return multistream([beforeStream, stream, afterStream])
+
+
+async function wrapStringStream({ stream, beforeString, afterString }) {
+  let beforeStream = new _stream.default.Readable();
+  beforeStream.push(beforeString);
+  beforeStream.push(null);
+  let afterStream = new _stream.default.Readable();
+  afterStream.push(afterString);
+  afterStream.push(null);
+  return (0, _multistream.default)([beforeStream, stream, afterStream]);
 }
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NvdXJjZS9tYW5pcHVsYXRlL3dyYXBTdHJpbmdTdHJlYW0uanMiXSwibmFtZXMiOlsid3JhcFN0cmluZ1N0cmVhbSIsInN0cmVhbSIsImJlZm9yZVN0cmluZyIsImFmdGVyU3RyaW5nIiwiYmVmb3JlU3RyZWFtIiwiU3RyZWFtIiwiUmVhZGFibGUiLCJwdXNoIiwiYWZ0ZXJTdHJlYW0iXSwibWFwcGluZ3MiOiI0TUFBQTtBQUNBOzs7O0FBSU8sZUFBZUEsZ0JBQWYsQ0FBZ0MsRUFBRUMsTUFBRixFQUFVQyxZQUFWLEVBQXdCQyxXQUF4QixFQUFoQyxFQUF1RTtBQUM1RSxNQUFJQyxZQUFZLEdBQUcsSUFBSUMsZ0JBQU9DLFFBQVgsRUFBbkI7QUFDQUYsRUFBQUEsWUFBWSxDQUFDRyxJQUFiLENBQWtCTCxZQUFsQjtBQUNBRSxFQUFBQSxZQUFZLENBQUNHLElBQWIsQ0FBa0IsSUFBbEI7QUFDQSxNQUFJQyxXQUFXLEdBQUcsSUFBSUgsZ0JBQU9DLFFBQVgsRUFBbEI7QUFDQUUsRUFBQUEsV0FBVyxDQUFDRCxJQUFaLENBQWlCSixXQUFqQjtBQUNBSyxFQUFBQSxXQUFXLENBQUNELElBQVosQ0FBaUIsSUFBakI7QUFDQSxTQUFPLDBCQUFZLENBQUNILFlBQUQsRUFBZUgsTUFBZixFQUF1Qk8sV0FBdkIsQ0FBWixDQUFQO0FBQ0QiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgU3RyZWFtIGZyb20gJ3N0cmVhbSdcbmltcG9ydCBtdWx0aXN0cmVhbSBmcm9tICdtdWx0aXN0cmVhbSdcblxuLyoqIHdyYXAgc3RyZWFtIHdpdGggZGVsaW1ldGVycyAoaW1wbGVtZW50YXRpb25zIHVzaW5nIHN0cmVhbXMpXG4gKiovXG5leHBvcnQgYXN5bmMgZnVuY3Rpb24gd3JhcFN0cmluZ1N0cmVhbSh7IHN0cmVhbSwgYmVmb3JlU3RyaW5nLCBhZnRlclN0cmluZyB9KSB7XG4gIGxldCBiZWZvcmVTdHJlYW0gPSBuZXcgU3RyZWFtLlJlYWRhYmxlKClcbiAgYmVmb3JlU3RyZWFtLnB1c2goYmVmb3JlU3RyaW5nKVxuICBiZWZvcmVTdHJlYW0ucHVzaChudWxsKVxuICBsZXQgYWZ0ZXJTdHJlYW0gPSBuZXcgU3RyZWFtLlJlYWRhYmxlKClcbiAgYWZ0ZXJTdHJlYW0ucHVzaChhZnRlclN0cmluZylcbiAgYWZ0ZXJTdHJlYW0ucHVzaChudWxsKVxuICByZXR1cm4gbXVsdGlzdHJlYW0oW2JlZm9yZVN0cmVhbSwgc3RyZWFtLCBhZnRlclN0cmVhbV0pXG59XG4iXX0=
